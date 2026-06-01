@@ -66,3 +66,42 @@ void createBarang() {
     outfile.close();
     cout << "Barang berhasil ditambahkan ke dalam file" << endl;
 }
+
+void updateBarang() {
+    vector<string> daftarBarang;
+    ifstream infile("gudang.txt");
+    string baris;
+    
+    while (getline(infile, baris)) {
+        daftarBarang.push_back(baris);
+    }
+    infile.close();
+
+    if (daftarBarang.empty()) {
+        cout << "Gudang masih kosong, tidak ada yang bisa di-update." << endl;
+        return;
+    }
+
+    cout << "\nPilih urutan barang yang ingin diubah (1 - " << daftarBarang.size() << "): ";
+    int target;
+    cin >> target;
+
+    if (target < 1 || target > daftarBarang.size()) {
+        cout << "Nomor tidak valid!" << endl;
+        return;
+    }
+
+    cout << "Masukkan nama barang baru: ";
+    cin.ignore();
+    string namaBaru;
+    getline(cin, namaBaru);
+
+    daftarBarang[target - 1] = namaBaru;
+
+    ofstream outfile("gudang.txt", ios::trunc);
+    for (const string& b : daftarBarang) {
+        outfile << b << endl;
+    }
+    outfile.close();
+    cout << "Barang berhasil diperbarui!" << endl;
+}
