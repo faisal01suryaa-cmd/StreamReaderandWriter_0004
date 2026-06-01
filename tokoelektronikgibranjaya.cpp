@@ -105,3 +105,38 @@ void updateBarang() {
     outfile.close();
     cout << "Barang berhasil diperbarui!" << endl;
 }
+
+void deleteBarang() {
+    vector<string> daftarBarang;
+    ifstream infile("gudang.txt");
+    string baris;
+    
+    while (getline(infile, baris)) {
+        daftarBarang.push_back(baris);
+    }
+    infile.close();
+
+    if (daftarBarang.empty()) {
+        cout << "Gudang masih kosong, tidak ada yang bisa dihapus." << endl;
+        return;
+    }
+
+    cout << "\nPilih urutan barang yang ingin dihapus (1 - " << daftarBarang.size() << "): ";
+    int target;
+    cin >> target;
+
+    if (target < 1 || target > daftarBarang.size()) {
+        cout << "Nomor tidak valid!" << endl;
+        return;
+    }
+
+    daftarBarang.erase(daftarBarang.begin() + target - 1);
+
+    ofstream outfile("gudang.txt", ios::trunc);
+    for (const string& b : daftarBarang) {
+        outfile << b << endl;
+    }
+    outfile.close();
+    cout << "Barang berhasil dihapus!" << endl;
+} 
+
