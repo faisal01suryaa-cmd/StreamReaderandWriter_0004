@@ -53,3 +53,16 @@ void readGudang() {
     }
     infile.close();
 }
+
+void createBarang() {
+    ofstream outfile("gudang.txt", ios::app);
+    string namaBarang;
+    
+    cout << "Masukkan nama barang baru yang ingin ditambahkan ke gudang: ";
+    cin.ignore();
+    getline(cin, namaBarang);
+    
+    outfile << namaBarang << endl;
+    outfile.close();
+    cout << "Barang berhasil ditambahkan ke dalam file" << endl;
+}
