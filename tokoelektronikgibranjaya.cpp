@@ -159,3 +159,47 @@ int main() {
         cout << "5. Keluar" << endl;
         cout << "Masukkan Pilihan (1-5): ";
         cin >> pilihan;
+
+        switch (pilihan) {
+            case 1:
+                createBarang();
+                break;
+            case 2:
+                updateBarang();
+                break;
+            case 3:
+                deleteBarang();
+                break;
+            case 4:
+                cout << "\n--- Memulai Simulasi Etalase ---" << endl;
+                
+                cout << "Skenario 1 Mengambil barang di rak indeks ke-1:" << endl;
+                try {
+                    string produk = toko.ambilProduk(1);
+                    cout << ">>> SUKSES: Barang ditemukan -> " << produk << endl;
+                } catch (const exception& e) {
+                    cout << ">>> ERROR: " << e.what() << endl;
+                }
+
+                cout << endl;
+
+                cout << "Skenario 2 Mengambil barang di rak indeks ke-5:" << endl;
+                try {
+                    string produk = toko.ambilProduk(5);
+                    cout << ">>> SUKSES: Barang ditemukan -> " << produk << endl;
+                } catch (const exception& e) {
+                
+                    cout << ">>> " << e.what() << endl;
+                }
+                cout << "--------------------------------" << endl;
+                break;
+            case 5:
+                cout << "Keluar dari program. Terima kasih!" << endl;
+                break;
+            default:
+                cout << "Pilihan tidak valid, silahkan coba lagi." << endl;
+        }
+    } while (pilihan != 5);
+
+    return 0;
+}
