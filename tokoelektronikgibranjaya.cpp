@@ -140,3 +140,22 @@ void deleteBarang() {
     cout << "Barang berhasil dihapus!" << endl;
 } 
 
+int main() {
+    TokoElektronik toko;
+    int pilihan;
+
+    do {
+        cout << "\n============================================" << endl;
+        cout << "   Sistem Manajemen Toko Gibran Jaya        " << endl;
+        cout << "============================================" << endl;
+        
+        readGudang(); 
+        
+        cout << "\nMenu Utama CRUD & Etalase:" << endl;
+        cout << "1. Tambah Barang Gudang " << endl;
+        cout << "2. Ubah Barang Gudang " << endl;
+        cout << "3. Hapus Barang Gudang " << endl;
+        cout << "4. Jalankan Simulasi Etalase" << endl;
+        cout << "5. Keluar" << endl;
+        cout << "Masukkan Pilihan (1-5): ";
+        cin >> pilihan;
